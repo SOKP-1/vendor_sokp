@@ -300,8 +300,8 @@ else
     endif
 endif
 
-SpiritRom_Version=4.4.3
-CM_MOD_VERSION := SpiritRom-$(SpiritRom_Version)-$(shell date -u +%Y%m%d)$(CM_EXTRAVERSION)-$(CM_BUILD)
+SOKP_Version=4.4.4
+CM_MOD_VERSION := SOKP-$(SOKP_Version)-$(shell date -u +%Y%m%d)$(CM_EXTRAVERSION)-$(CM_BUILD)
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
