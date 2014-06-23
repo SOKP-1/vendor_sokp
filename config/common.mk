@@ -1,4 +1,4 @@
-PRODUCT_BRAND ?= cyanogenmod
+PRODUCT_BRAND ?= SOKP
 
 SUPERUSER_EMBEDDED := true
 SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
@@ -13,7 +13,7 @@ TARGET_BOOTANIMATION_SIZE := $(shell \
   fi )
 
 # get a sorted list of the sizes
-bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cm/prebuilt/common/bootanimation))
+bootanimation_sizes := $(subst .zip,, $(shell ls vendor/sokp/prebuilt/common/bootanimation))
 bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
 
 # find the appropriate size and set
@@ -30,18 +30,10 @@ endef
 $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
 ifeq ($(TARGET_BOOTANIMATION_HALF_RES),true)
-PRODUCT_BOOTANIMATION := vendor/cm/prebuilt/common/bootanimation/halfres/$(TARGET_BOOTANIMATION_NAME).zip
+PRODUCT_BOOTANIMATION := vendor/sokp/prebuilt/common/bootanimation/halfres/$(TARGET_BOOTANIMATION_NAME).zip
 else
-PRODUCT_BOOTANIMATION := vendor/cm/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip
+PRODUCT_BOOTANIMATION := vendor/sokp/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip
 endif
-endif
-
-ifdef CM_NIGHTLY
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmodnightly
-else
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmod
 endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
@@ -64,6 +56,43 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.semc.sound_effects_enabled=true \
+    ro.semc.xloud.supported=true \
+    media.xloud.enable=1 \
+    media.xloud.supported=true \
+    ro.semc.enhance.supported=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.service.enhance.enable=1 \
+    ro.semc.clearaudio.supported=true \
+    persist.service.clearaudio.enable=1 \
+    ro.sony.walkman.logger=1 \
+    persist.service.walkman.enable=1 \
+    ro.somc.clearphase.supported=true \
+    persist.service.clearphase.enable=1 \
+    af.resampler.quality=255
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product-res-path=framework/SemcGenericUxpRes.apk \
+    af.resampler.quality=255 \
+    ro.somc.clearphase.supported=true \
+    ro.semc.xloud.supported=true \
+    ro.somc.sforce.supported=true \
+    ro.service.swiqi3.supported=true \
+    persist.service.swiqi3.enable=1 \
+    tunnel.decode=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    tunnel.audiovideo.decode=true \
+    persist.speaker.prot.enable=false \
+    media.aac_51_output_enabled=true \
+    dev.pm.dyn_samplingrate=1 \
+    ro.HOME_APP_ADJ=1 \
+    persist.sys.use_dithering=1 \
+    presist.sys.font_clarity=0
+
+
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
 # Thank you, please drive thru!
@@ -76,31 +105,31 @@ endif
 
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
-    vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
+    vendor/sokp/CHANGELOG.mkdn:system/etc/CHANGELOG-SOKP.txt
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
-    vendor/cm/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
-    vendor/cm/prebuilt/common/bin/50-backupScript.sh:system/addon.d/50-backupScript.sh
+    vendor/sokp/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
+    vendor/sokp/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
+    vendor/sokp/prebuilt/common/bin/50-backupScript.sh:system/addon.d/50-backupScript.sh
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/sokp/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/sokp/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/sokp/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
-# CM-specific init file
+# SOKP-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
+    vendor/sokp/prebuilt/common/etc/init.local.rc:root/init.sokp.rc
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
-    vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
-    vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
+    vendor/sokp/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
+    vendor/sokp/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -110,41 +139,37 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
 
-# This is CM!
+# This is CM Based!
 PRODUCT_COPY_FILES += \
-    vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+    vendor/sokp/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
 # T-Mobile theme engine
-include vendor/cm/config/themes_common.mk
+include vendor/sokp/config/themes_common.mk
 
-# Required CM packages
+# Required SOKP packages
 PRODUCT_PACKAGES += \
     Development \
     LatinIME \
     BluetoothExt
 
-# Optional CM packages
+# Optional SOKP packages
 PRODUCT_PACKAGES += \
     VoicePlus \
     Basic \
     libemoji
 
-# Custom CM packages
+# Custom SOKP packages
 PRODUCT_PACKAGES += \
-    Launcher3 \
-    Trebuchet \
-    DSPManager \
+    SonicPapers \
+    GPSOptimizer \
     libcyanogen-dsp \
     audio_effects.conf \
-    CMWallpapers \
     Apollo \
     CMFileManager \
-    LockClock \
-    CMFota \
-    CMAccount \
-    CMHome
+    LockClock 
+    
 
-# CM Hardware Abstraction Framework
+# SOKP Hardware Abstraction Framework
 PRODUCT_PACKAGES += \
     org.cyanogenmod.hardware \
     org.cyanogenmod.hardware.xml
@@ -212,9 +237,9 @@ PRODUCT_PACKAGES += \
     su
 
 # Terminal Emulator
-PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/Term.apk:system/app/Term.apk \
-    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+#PRODUCT_COPY_FILES +=  \
+    #vendor/sokp/proprietary/Term.apk:system/app/Term.apk \
+    #vendor/sokp/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=1
@@ -228,84 +253,84 @@ endif
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/sokp/overlay/common
 
-PRODUCT_VERSION_MAJOR = 11
+PRODUCT_VERSION_MAJOR = KK444
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0-RC0
 
-# Set CM_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+# Set SOKP_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
 
-ifndef CM_BUILDTYPE
+ifndef SOKP_BUILDTYPE
     ifdef RELEASE_TYPE
-        # Starting with "CM_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^CM_||g')
-        CM_BUILDTYPE := $(RELEASE_TYPE)
+        # Starting with "SOKP_" is optional
+        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^SOKP_||g')
+        SOKP_BUILDTYPE := $(RELEASE_TYPE)
     endif
 endif
 
 # Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(CM_BUILDTYPE)),)
-    CM_BUILDTYPE :=
+ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(SOKP_BUILDTYPE)),)
+    SOKP_BUILDTYPE :=
 endif
 
-ifdef CM_BUILDTYPE
-    ifneq ($(CM_BUILDTYPE), SNAPSHOT)
-        ifdef CM_EXTRAVERSION
+ifdef SOKP_BUILDTYPE
+    ifneq ($(SOKP_BUILDTYPE), SNAPSHOT)
+        ifdef SOKP_EXTRAVERSION
             # Force build type to EXPERIMENTAL
-            CM_BUILDTYPE := EXPERIMENTAL
+            SOKP_BUILDTYPE := EXPERIMENTAL
             # Remove leading dash from CM_EXTRAVERSION
-            CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to CM_EXTRAVERSION
-            CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
+            SOKP_EXTRAVERSION := $(shell echo $(SOKP_EXTRAVERSION) | sed 's/-//')
+            # Add leading dash to SOKP_EXTRAVERSION
+            SOKP_EXTRAVERSION := -$(SOKP_EXTRAVERSION)
         endif
     else
-        ifndef CM_EXTRAVERSION
+        ifndef SOKP_EXTRAVERSION
             # Force build type to EXPERIMENTAL, SNAPSHOT mandates a tag
-            CM_BUILDTYPE := EXPERIMENTAL
+            SOKP_BUILDTYPE := EXPERIMENTAL
         else
-            # Remove leading dash from CM_EXTRAVERSION
-            CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to CM_EXTRAVERSION
-            CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
+            # Remove leading dash from SOKP_EXTRAVERSION
+            SOKP_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
+            # Add leading dash to SOKP_EXTRAVERSION
+            SOKP_EXTRAVERSION := -$(SOKP_EXTRAVERSION)
         endif
     endif
 else
-    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := UNOFFICIAL
-    CM_EXTRAVERSION :=
+    # If SOKP_BUILDTYPE is not defined, set to UNOFFICIAL
+    SOKP_BUILDTYPE := UNOFFICIAL
+    SOKP_EXTRAVERSION :=
 endif
 
-ifeq ($(CM_BUILDTYPE), UNOFFICIAL)
+ifeq ($(SOKP_BUILDTYPE), UNOFFICIAL)
     ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        CM_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
+        SOKP_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
     endif
 endif
 
-ifeq ($(CM_BUILDTYPE), RELEASE)
+ifeq ($(SOKP_BUILDTYPE), RELEASE)
     ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
+        SOKP_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(SOKP_BUILD)
     else
         ifeq ($(TARGET_BUILD_VARIANT),user)
-            CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(CM_BUILD)
+            SOKP_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(SOKP_BUILD)
         else
-            CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
+            SOKP_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(SOKP_BUILD)
         endif
     endif
 else
     ifeq ($(PRODUCT_VERSION_MINOR),0)
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
+        SOKP_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(SOKP_BUILDTYPE)$(SOKP_EXTRAVERSION)-$(SOKP_BUILD)
     else
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
+        SOKP_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(SOKP_BUILDTYPE)$(SOKP_EXTRAVERSION)-$(SOKP_BUILD)
     endif
 endif
 
-SOKP_Version=4.4.4
-CM_MOD_VERSION := SOKP-$(SOKP_Version)-$(shell date -u +%Y%m%d)$(CM_EXTRAVERSION)-$(CM_BUILD)
+SOKP_Version=KK444-KTU84P
+SOKP_MOD_VERSION := SOKP-$(SOKP_Version)-$(shell date -u +%Y%m%d)$(SOKP_EXTRAVERSION)-$(SOKP_BUILD)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.cm.version=$(CM_VERSION) \
-  ro.modversion=$(CM_MOD_VERSION) \
+  ro.sokp.version=SOKP-$(SOKP_VERSION) \
+  ro.modversion=$(SOKP_MOD_VERSION) \
   ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
 
 -include vendor/cm-priv/keys/keys.mk
@@ -316,3 +341,14 @@ PRODUCT_PROPERTY_OVERRIDES += persist.sys.recovery_update=false
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
+
+# SOKP Files
+PRODUCT_COPY_FILES += \
+    vendor/sokp/prebuilt/common/app/Audio_Fx_Widget_1.1.5-signed.apk:system/app/Audio_Fx_Widget_1.1.5-signed.apk \
+    vendor/sokp/prebuilt/common/app/CameraNext.apk:system/app/CameraNext.apk \
+    vendor/sokp/prebuilt/common/app/GalleryNext.apk:system/app/GalleryNext.apk \
+    vendor/sokp/prebuilt/common/app/Hexo.apk:system/app/Hexo.apk \
+    vendor/sokp/prebuilt/common/app/HexoIcons.apk:system/app/HexoIcons.apk \
+    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.3.4beta1.apk:system/app/ApexLauncher_v2.3.4beta1.apk \
+    vendor/sokp/prebuilt/common/app/SokpStats.apk:system/app/SokpStats.apk \
+    vendor/sokp/prebuilt/common/app/ThemeStore.apk:system/app/ThemeStore.apk 
