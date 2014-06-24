@@ -325,13 +325,13 @@ else
     endif
 endif
 
-SOKP_Version=KK444-KTU84P
+SOKP_Version=MS-02-KK444-KTU84P
 SOKP_MOD_VERSION := SOKP-$(SOKP_Version)-$(shell date -u +%Y%m%d)$(SOKP_EXTRAVERSION)-$(SOKP_BUILD)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.sokp.version=SOKP-$(SOKP_VERSION) \
+  ro.sokp.version=SOKP-$(SOKP_Version)-$(SOKP_BUILD)-$(shell date -u +%Y%m%d)$(SOKP_EXTRAVERSION) \
   ro.modversion=$(SOKP_MOD_VERSION) \
-  ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
+  ro.cmlegal.url=http://sonic-developers.com/?page_id=154
 
 -include vendor/cm-priv/keys/keys.mk
 
@@ -353,10 +353,11 @@ PRODUCT_COPY_FILES += \
 # SOKP Files
 PRODUCT_COPY_FILES += \
     vendor/sokp/prebuilt/common/app/Audio_Fx_Widget_1.1.5-signed.apk:system/app/Audio_Fx_Widget_1.1.5-signed.apk \
+    vendor/sokp/prebuilt/common/app/com.krabappel2548.dolbymobile-signed.apk:system/app/com.krabappel2548.dolbymobile-signed.apk \
     vendor/sokp/prebuilt/common/app/CameraNext.apk:system/app/CameraNext.apk \
     vendor/sokp/prebuilt/common/app/GalleryNext.apk:system/app/GalleryNext.apk \
     vendor/sokp/prebuilt/common/app/Hexo.apk:system/app/Hexo.apk \
     vendor/sokp/prebuilt/common/app/HexoIcons.apk:system/app/HexoIcons.apk \
-    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.3.4beta1.apk:system/app/ApexLauncher_v2.3.4beta1.apk \
+    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.0.apk:system/app/ApexLauncher_v2.4.0.apk \
     vendor/sokp/prebuilt/common/app/SokpStats.apk:system/app/SokpStats.apk \
     vendor/sokp/prebuilt/common/app/ThemeStore.apk:system/app/ThemeStore.apk 
