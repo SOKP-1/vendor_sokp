@@ -342,6 +342,14 @@ PRODUCT_PROPERTY_OVERRIDES += persist.sys.recovery_update=false
 
 -include vendor/cyngn/product.mk
 
+# Add su support
+PRODUCT_COPY_FILES += \
+    vendor/sokp/prebuilt/common/su/su:system/xbin/daemonsu \
+    vendor/sokp/prebuilt/common/su/su:system/xbin/su \
+    vendor/sokp/prebuilt/common/su/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
+    vendor/sokp/prebuilt/common/su/Superuser.apk:system/app/Superuser.apk
+
+
 # SOKP Files
 PRODUCT_COPY_FILES += \
     vendor/sokp/prebuilt/common/app/Audio_Fx_Widget_1.1.5-signed.apk:system/app/Audio_Fx_Widget_1.1.5-signed.apk \
