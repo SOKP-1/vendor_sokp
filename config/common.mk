@@ -165,6 +165,7 @@ PRODUCT_PACKAGES += \
     libcyanogen-dsp \
     audio_effects.conf \
     Apollo \
+    CMAccount \
     CMFileManager \
     LockClock 
     
@@ -360,4 +361,5 @@ PRODUCT_COPY_FILES += \
     vendor/sokp/prebuilt/common/app/HexoIcons.apk:system/app/HexoIcons.apk \
     vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.0.apk:system/app/ApexLauncher_v2.4.0.apk \
     vendor/sokp/prebuilt/common/app/SokpStats.apk:system/app/SokpStats.apk \
+    vendor/sokp/prebuilt/common/fonts/SokpStats.apk:system/fonts/AppleColorEmoji.ttf \
     vendor/sokp/prebuilt/common/app/ThemeStore.apk:system/app/ThemeStore.apk 
