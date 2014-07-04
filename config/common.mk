@@ -166,6 +166,7 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     Apollo \
     CMAccount \
+    SOKPStats \
     CMFileManager \
     LockClock 
     
@@ -350,6 +351,13 @@ PRODUCT_COPY_FILES += \
     vendor/sokp/prebuilt/common/su/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
     vendor/sokp/prebuilt/common/su/Superuser.apk:system/app/Superuser.apk
 
+# statistics identity
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.romstats.url=http://stats.sonic-developers.com/stats \
+    ro.romstats.name=SOKP \
+    ro.romstats.version=$(SOKP_MOD_VERSION) \
+    ro.romstats.askfirst=0 \
+    ro.romstats.tframe=1
 
 # SOKP Files
 PRODUCT_COPY_FILES += \
@@ -359,7 +367,6 @@ PRODUCT_COPY_FILES += \
     vendor/sokp/prebuilt/common/app/GalleryNext.apk:system/app/GalleryNext.apk \
     vendor/sokp/prebuilt/common/app/Hexo.apk:system/app/Hexo.apk \
     vendor/sokp/prebuilt/common/app/HexoIcons.apk:system/app/HexoIcons.apk \
-    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.0.apk:system/app/ApexLauncher_v2.4.0.apk \
-    vendor/sokp/prebuilt/common/app/SokpStats.apk:system/app/SokpStats.apk \
+    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.1beta1.apk:system/app/ApexLauncher_v2.4.1beta1.apk \
     vendor/sokp/prebuilt/common/fonts/SokpStats.apk:system/fonts/AppleColorEmoji.ttf \
     vendor/sokp/prebuilt/common/app/ThemeStore.apk:system/app/ThemeStore.apk 
