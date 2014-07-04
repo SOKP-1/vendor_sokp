@@ -353,7 +353,7 @@ PRODUCT_COPY_FILES += \
 
 # statistics identity
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.romstats.url=http://stats.sonic-developers.com/stats \
+    ro.romstats.url=http://stats.sonic-developers.com/ \
     ro.romstats.name=SOKP \
     ro.romstats.version=$(SOKP_MOD_VERSION) \
     ro.romstats.askfirst=0 \
