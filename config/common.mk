@@ -368,5 +368,4 @@ PRODUCT_COPY_FILES += \
     vendor/sokp/prebuilt/common/app/Hexo.apk:system/app/Hexo.apk \
     vendor/sokp/prebuilt/common/app/HexoIcons.apk:system/app/HexoIcons.apk \
     vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.1beta1.apk:system/app/ApexLauncher_v2.4.1beta1.apk \
-    vendor/sokp/prebuilt/common/fonts/SokpStats.apk:system/fonts/AppleColorEmoji.ttf \
     vendor/sokp/prebuilt/common/app/ThemeStore.apk:system/app/ThemeStore.apk 
