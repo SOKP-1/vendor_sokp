@@ -331,7 +331,7 @@ else
     endif
 endif
 
-SOKP_Version=MS-03-KK444-KTU84P
+SOKP_Version=SS-01-KK444-KTU84P
 SOKP_MOD_VERSION := SOKP-$(SOKP_Version)-$(shell date -u +%Y%m%d)$(SOKP_EXTRAVERSION)-$(SOKP_BUILD)
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -368,4 +368,4 @@ PRODUCT_COPY_FILES += \
     vendor/sokp/prebuilt/common/app/com.krabappel2548.dolbymobile-signed.apk:system/app/com.krabappel2548.dolbymobile-signed.apk \
     vendor/sokp/prebuilt/common/app/Hexo.apk:system/app/Hexo.apk \
     vendor/sokp/prebuilt/common/app/HexoIcons.apk:system/app/HexoIcons.apk \
-    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.1beta1.apk:system/app/ApexLauncher_v2.4.1beta1.apk 
+    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.1.apk:system/app/ApexLauncher_v2.4.1.apk 
