@@ -115,7 +115,7 @@ PRODUCT_COPY_FILES += \
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bin/otasigcheck.sh:system/bin/otasigcheck.sh
+    vendor/sokp/prebuilt/common/bin/otasigcheck.sh:system/bin/otasigcheck.sh
 
 # init.d support
 PRODUCT_COPY_FILES += \
@@ -171,6 +171,7 @@ PRODUCT_PACKAGES += \
     Apollo \
     CMAccount \
     SOKPStats \
+    EOSWeather \
     CMFileManager \
     LockClock 
     
