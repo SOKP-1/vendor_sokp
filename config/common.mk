@@ -373,4 +373,7 @@ PRODUCT_COPY_FILES += \
     vendor/sokp/prebuilt/common/app/com.krabappel2548.dolbymobile-signed.apk:system/app/com.krabappel2548.dolbymobile-signed.apk \
     vendor/sokp/prebuilt/common/app/Hexo.apk:system/app/Hexo.apk \
     vendor/sokp/prebuilt/common/app/HexoIcons.apk:system/app/HexoIcons.apk \
-    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.1.apk:system/app/ApexLauncher_v2.4.1.apk 
+    vendor/sokp/prebuilt/common/app/ApexLauncher_v2.4.1.apk:system/app/ApexLauncher_v2.4.1.apk \
+    vendor/sokp/prebuilt/common/etc/fallback_fonts.xml:system/etc/fallback_fonts.xml \
+    vendor/sokp/prebuilt/common/fonts/SamColorEmoji.ttf:system/fonts/SamColorEmoji.ttf 
+ 

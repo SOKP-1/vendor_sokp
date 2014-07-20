@@ -31,11 +31,6 @@
 <familyset>
     <family>
         <fileset>
-            <file>sahlnaskh-regular.ttf</file>
-        </fileset>
-    </family>
-    <family>
-        <fileset>
             <file variant="elegant">DroidNaskh-Regular.ttf</file>
         </fileset>
     </family>
@@ -189,16 +184,16 @@
             <file>NotoSansSymbols-Regular.ttf</file>
         </fileset>
     </family>
-    <family>
+  <family>
         <fileset>
-            <file>AppleColorEmoji.ttf</file>
+            <file>SamColorEmoji.ttf</file>
         </fileset>
     </family>
-   <family>
-     <fileset>
-        <file>AndroidEmoji.ttf</file>
-       </fileset>
-     </family>
+    <family>
+        <fileset>
+            <file>AndroidEmoji.ttf</file>
+        </fileset>
+    </family>
     <family>
         <fileset>
             <file>NotoColorEmoji.ttf</file>
