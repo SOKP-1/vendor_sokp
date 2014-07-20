@@ -91,7 +91,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.use_dithering=1 \
     presist.sys.font_clarity=0
 
-
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.fluence.mode=endfire \
+    persist.audio.hp=true \
+    persist.htc.audio.pcm.samplerate=44100 \
+    persist.htc.audio.pcm.channels=2 \
+    htc.audio.swalt.mingain=14512 \
+    htc.audio.swalt.enable=1 \
+    htc.audio.alc.enable=1
+    
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
