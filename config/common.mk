@@ -351,9 +351,12 @@ PRODUCT_PROPERTY_OVERRIDES += persist.sys.recovery_update=false
 
 # Add su support
 #PRODUCT_COPY_FILES += \
-    #vendor/sokp/prebuilt/common/su/su:system/xbin/su \
-    #vendor/sokp/prebuilt/common/su/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
-    #vendor/sokp/prebuilt/common/su/Superuser.apk:system/app/Superuser.apk
+    vendor/sokp/prebuilt/common/su/su:system/xbin/su \
+    vendor/sokp/prebuilt/common/su/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
+    vendor/sokp/prebuilt/common/su/daemonsu:system/xbin/daemonsu \
+    vendor/sokp/prebuilt/common/su/install-recovery.sh:system/etc/install-recovery.sh \
+    vendor/sokp/prebuilt/common/su/.installed_su_daemon:system/etc/.installed_su_daemon \
+    vendor/sokp/prebuilt/common/su/Superuser.apk:system/app/Superuser.apk
 
 # statistics identity
 PRODUCT_PROPERTY_OVERRIDES += \
