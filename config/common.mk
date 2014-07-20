@@ -172,6 +172,7 @@ PRODUCT_PACKAGES += \
     CMAccount \
     SOKPStats \
     EOSWeather \
+    AndroidKernelTweaker \
     CMFileManager \
     LockClock 
     
