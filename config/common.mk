@@ -341,7 +341,7 @@ else
     endif
 endif
 
-SOKP_Version=MS-04-KK444-KTU84Q
+SOKP_Version=KK444-KTU84Q-V-01
 SOKP_MOD_VERSION := SOKP-$(SOKP_Version)-$(shell date -u +%Y%m%d)$(SOKP_EXTRAVERSION)-$(SOKP_BUILD)
 
 PRODUCT_PROPERTY_OVERRIDES += \
